@@ -24,6 +24,6 @@ This project is interesting to me as I am interested in the process of game crea
 - As a user, I want to be able to view the list of objects that can be used to create the level. 
 - As a user, I want to be able to add a playable character into the level. 
 - As a user, I want to be able to actually control the character and play the level I created.
-- As a user, I want to be able to complete the level I created.
-- As a user, I want to be able to fail the level I created.
+- As a user, I want to be able to complete the levels I created.
+- As a user, I want to be able to fail the levels I created.
 - As a user, I want to be able to view the levels I have created. 
