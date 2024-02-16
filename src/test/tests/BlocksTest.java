@@ -38,6 +38,7 @@ class BlocksTest {
         assertEquals(8, tile.getYpos());
         assertEquals("Tile", tile.getType());
 
+
         assertEquals(9, spawn.getXpos());
         assertEquals(10, spawn.getYpos());
         assertEquals("Spawn", spawn.getType());
