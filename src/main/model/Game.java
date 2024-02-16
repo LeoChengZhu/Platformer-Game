@@ -22,7 +22,7 @@ public class Game {
     // MODIFIES: this
     // EFFECTS: initializes game world
     public void createWorld(int width, int height) {
-        world = new World(height, width);
+        world = new World(width, height);
     }
 
     // MODIFIES: this
@@ -65,7 +65,6 @@ public class Game {
             } else if (!isISOControl(c)) {
                 input = input + c;
             }
-
         }
     }
 
@@ -188,5 +187,21 @@ public class Game {
     // EFFECTS: returns current input
     public String getInput() {
         return input;
+    }
+
+
+    // EFFECTS: returns game state
+    public Boolean getSimulating() {
+        return simulating;
+    }
+
+    // EFFECTS: returns world
+    public World getWorld() {
+        return world;
+    }
+
+    // EFFECTS: returns simulate
+    public Simulate getSimulate() {
+        return simulate;
     }
 }

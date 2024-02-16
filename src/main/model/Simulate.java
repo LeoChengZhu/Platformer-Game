@@ -15,6 +15,19 @@ public class Simulate {
     }
 
     // MODIFIES: this
+    // EFFECTS: initializes gameWorld and player, and places player on top of Spawn in the game world
+    public void initializeSimulation(World world) {
+        this.gameWorld = world;
+        List<Blocks> gameWorld = world.getWorld();
+        for (Blocks block:gameWorld) {
+            if (block.getType().equals("Spawn")) {
+                this.player = new Player(block.getXpos(), block.getYpos() - 1);
+            }
+        }
+        reflectPlayerToWorld();
+    }
+
+    // MODIFIES: this
     // EFFECTS: updates player positions according to block behaviours,
     //          reflect changes to the player into the world,
     //          remove player from world if game is over
@@ -84,19 +97,6 @@ public class Simulate {
             neutralBehaviours();
         }
         this.input = '0';
-    }
-
-    // MODIFIES: this
-    // EFFECTS: initializes gameWorld and player, and places player on top of Spawn in the game world
-    public void initializeSimulation(World world) {
-        this.gameWorld = world;
-        List<Blocks> gameWorld = world.getWorld();
-        for (Blocks block:gameWorld) {
-            if (block.getType().equals("Spawn")) {
-                this.player = new Player(block.getXpos(), block.getYpos() - 1);
-            }
-        }
-        reflectPlayerToWorld();
     }
 
     // MODIFIES: this
@@ -239,4 +239,15 @@ public class Simulate {
     public Boolean isGameOver() {
         return gameOver;
     }
+
+    // EFFECTS: returns input
+    public char getInput() {
+        return input;
+    }
+
+    // EFFECTS: returns player
+    public Player getPlayer() {
+        return player;
+    }
+
 }
