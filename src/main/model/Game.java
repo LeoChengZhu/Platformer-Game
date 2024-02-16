@@ -115,13 +115,13 @@ public class Game {
     }
 
 
-    // EFFECTS: returns game world as a string with with different character representing different blocks:
-    //          "Tile"   -> "地"
-    //          "Empty"  -> " " (simulating), "空" (not simulating)
-    //          "Spawn"  -> "生"
-    //          "End"    -> "赢"
-    //          "Death"  -> "死"
-    //          "Player" -> "我"
+    // EFFECTS: returns game world as a string with different character representing different blocks:
+    //          "Tile"   -> "a"
+    //          "Empty"  -> " " (simulating), "b" (not simulating)
+    //          "Spawn"  -> "c"
+    //          "End"    -> "d"
+    //          "Death"  -> "e"
+    //          "Player" -> "f"
     @SuppressWarnings("methodlength")
     public String getGameWorld() {
         List<Blocks> gameWorld = world.getWorld();
@@ -129,22 +129,22 @@ public class Game {
         for (Blocks object:gameWorld) {
             switch (object.getType()) {
                 case "Tile":
-                    worldString.append("地");
+                    worldString.append("a");
                     break;
                 case "Empty":
                     worldString.append(emptyVariations());
                     break;
                 case "Spawn":
-                    worldString.append("生");
+                    worldString.append("c");
                     break;
                 case "End":
-                    worldString.append("赢");
+                    worldString.append("d");
                     break;
                 case "Death":
-                    worldString.append("死");
+                    worldString.append("e");
                     break;
                 case "Player":
-                    worldString.append("我");
+                    worldString.append("f");
                     break;
             }
         }
@@ -156,7 +156,7 @@ public class Game {
         if (simulating) {
             return " ";
         }
-        return "空";
+        return "b";
     }
 
     // MODIFIES: this
