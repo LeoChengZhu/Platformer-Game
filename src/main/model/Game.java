@@ -116,12 +116,12 @@ public class Game {
 
 
     // EFFECTS: returns game world as a string with different character representing different blocks:
-    //          "Tile"   -> "a"
-    //          "Empty"  -> " " (simulating), "b" (not simulating)
-    //          "Spawn"  -> "c"
-    //          "End"    -> "d"
-    //          "Death"  -> "e"
-    //          "Player" -> "f"
+    //          "Tile"   -> "地"
+    //          "Empty"  -> " " (simulating), "空" (not simulating)
+    //          "Spawn"  -> "生"
+    //          "End"    -> "赢"
+    //          "Death"  -> "死"
+    //          "Player" -> "我"
     @SuppressWarnings("methodlength")
     public String getGameWorld() {
         List<Blocks> gameWorld = world.getWorld();
@@ -129,22 +129,22 @@ public class Game {
         for (Blocks object:gameWorld) {
             switch (object.getType()) {
                 case "Tile":
-                    worldString.append("a");
+                    worldString.append("地");
                     break;
                 case "Empty":
                     worldString.append(emptyVariations());
                     break;
                 case "Spawn":
-                    worldString.append("c");
+                    worldString.append("生");
                     break;
                 case "End":
-                    worldString.append("d");
+                    worldString.append("赢");
                     break;
                 case "Death":
-                    worldString.append("e");
+                    worldString.append("死");
                     break;
                 case "Player":
-                    worldString.append("f");
+                    worldString.append("我");
                     break;
             }
         }
@@ -156,7 +156,7 @@ public class Game {
         if (simulating) {
             return " ";
         }
-        return "b";
+        return "空";
     }
 
     // MODIFIES: this
