@@ -6,8 +6,9 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.*;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import model.Game;
+import model.World;
+
 import java.io.IOException;
-import java.util.Scanner;
 
 // Creates and displays the game world depending on the input
 // This class is partially adapted from code from the Puppy lab
@@ -21,7 +22,7 @@ public class WorldMaker {
     private int height;
 
     // EFFECTS: constructs the screen and game model according to specified width and height,
-    //          screen will always be above a certain width even if the game itself is a smaller width.
+    //          screen will always be above a certain width and height even if the game itself is a smaller.
     public WorldMaker(int width, int height) throws IOException, InterruptedException {
         this.width = width;
         this.height = height;
@@ -46,17 +47,49 @@ public class WorldMaker {
 
         game = new Game();
         game.createWorld(width, height);
+        startTicks();
+    }
 
+    // EFFECTS: constructs the screen and game model according to specified world width and height,
+    //          screen will always be above a certain width and height even if the world itself is smaller.
+    public WorldMaker(World world) throws IOException, InterruptedException {
+        this.height = world.getHeight();
+        this.width = world.getWidth();
+        if (width > MAXWIDTH) {
+            this.width = MAXWIDTH;
+        }
+        if (height > MAXHEIGHT) {
+            this.height = MAXHEIGHT;
+        }
+        if (height < 5) {
+            this.height = 5;
+        }
+        if (width < 20) {
+            screen = new DefaultTerminalFactory().setPreferTerminalEmulator(false)
+                    .setInitialTerminalSize(new TerminalSize(2 * 20, this.height + 3)).createScreen();
+        } else {
+            screen = new DefaultTerminalFactory().setPreferTerminalEmulator(false)
+                    .setInitialTerminalSize(new TerminalSize(2 * this.width, this.height + 3)).createScreen();
+        }
+        screen.startScreen();
+        screen.setCursorPosition(null);
+
+        game = new Game();
+        game.setWorld(world);
         startTicks();
     }
 
     // MODIFIES: this
     // EFFECTS: updates game with- tick()
     private void startTicks() throws IOException, InterruptedException {
-        while (true) {
+        Boolean isOver = game.isOver();
+        while (!isOver) {
             tick();
+            isOver = game.isOver();
             Thread.sleep(1000L / INTERVAL);
         }
+        System.out.println("Exiting program...");
+        System.exit(0);
     }
 
     // MODIFIES: this
@@ -108,17 +141,11 @@ public class WorldMaker {
         }
     }
 
-    // REQUIRES: inputs into console must be int
-    // EFFECTS: reads input from console to construct game world of a certain size
-    public static void main(String[] args) throws Exception {
-        int width;
-        int height;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter world width(max 32):");
-        width = input.nextInt();
-        System.out.println("Enter world height(max 32):");
-        height = input.nextInt();
 
-        new WorldMaker(width, height);
+
+    // EFFECTS: starts program
+    public static void main(String[] args) throws Exception {
+        new Initiate();
     }
+
 }

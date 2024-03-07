@@ -1,5 +1,8 @@
 package model;
 
+import persistence.JsonWriter;
+
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import static java.lang.Character.isISOControl;
@@ -12,17 +15,28 @@ public class Game {
     private Boolean simulating;
     private Simulate simulate;
     private String input;
+    private static final String STORE = "./data/save.json";
+    private JsonWriter jsonWriter;
+    private Boolean over;
 
     // EFFECTS: constructs game in create mode with no input
     public Game() {
         simulating = false;
         input = "";
+        jsonWriter = new JsonWriter(STORE);
+        over = false;
     }
 
     // MODIFIES: this
     // EFFECTS: initializes game world
     public void createWorld(int width, int height) {
         world = new World(width, height);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets world
+    public void setWorld(World world) {
+        this.world = world;
     }
 
     // MODIFIES: this
@@ -73,6 +87,8 @@ public class Game {
     // EFFECTS: apply different effects to game world depending on input:
     //          input length 1:
     //                  play -> sets mode to simulating(playing)
+    //                  save -> saves current world to JSON
+    //                  quit -> saves current world to JSON and exits game
     //          input length 4:
     //                  place [Blocks] [x] [y] -> places block at x y starting at (0, 0)
     //                                            [Blocks] -> "Tile", "Empty", "Death", "End", "Spawn"
@@ -80,8 +96,8 @@ public class Game {
     //                  fill [Blocks] [start x] [start y] [end x] [end y]
     //                         -> fills area contained by the two x, y coordinates, start x, y is top left of the area,
     //                            end x, y is bottom right of the area.
-    //                  [Blocks] -> "Tile", "Empty", "Death", "End", "Spawn"
-    // throw exception is an exception is caught from methods from World
+    //                  [Blocks] -> "Tile", "Empty", "Death", "End"
+    // throw exception if an exception is caught from methods from World
     @SuppressWarnings("methodlength")
     public void handleCreateCommand(String command)
             throws NumberFormatException, SpawnAlreadyExistsException, IllegalSpawnException,
@@ -93,9 +109,16 @@ public class Game {
                     if (commandStrings[0].equals("play")) {
                         play();
                     }
+                    if (commandStrings[0].equals("save")) {
+                        save("name");
+                    }
+                    if (commandStrings[0].equals("quit")) {
+                        save("name");
+                        makeGameOver();
+                    }
                     break;
                 case 4:
-                    if (commandStrings[0].equals("place")) {
+                    if (commandStrings[0].equals("set")) {
                         world.setBlock(commandStrings[1], Integer.parseInt(commandStrings[2]),
                                 Integer.parseInt(commandStrings[3]));
                     }
@@ -115,12 +138,12 @@ public class Game {
 
 
     // EFFECTS: returns game world as a string with different character representing different blocks:
-    //          "Tile"   -> "地"
-    //          "Empty"  -> " " (simulating), "空" (not simulating)
-    //          "Spawn"  -> "生"
-    //          "End"    -> "赢"
-    //          "Death"  -> "死"
-    //          "Player" -> "我"
+    //          "Tile"   -> "t"
+    //          "Empty"  -> " " (simulating), "a" (not simulating)
+    //          "Spawn"  -> "s"
+    //          "End"    -> "e"
+    //          "Death"  -> "d"
+    //          "Player" -> "p"
     @SuppressWarnings("methodlength")
     public String getGameWorld() {
         List<Blocks> gameWorld = world.getWorld();
@@ -128,22 +151,22 @@ public class Game {
         for (Blocks object:gameWorld) {
             switch (object.getType()) {
                 case "Tile":
-                    worldString.append("地");
+                    worldString.append("t");
                     break;
                 case "Empty":
                     worldString.append(emptyVariations());
                     break;
                 case "Spawn":
-                    worldString.append("生");
+                    worldString.append("s");
                     break;
                 case "End":
-                    worldString.append("赢");
+                    worldString.append("e");
                     break;
                 case "Death":
-                    worldString.append("死");
+                    worldString.append("d");
                     break;
                 case "Player":
-                    worldString.append("我");
+                    worldString.append("p");
                     break;
             }
         }
@@ -155,7 +178,7 @@ public class Game {
         if (simulating) {
             return " ";
         }
-        return "空";
+        return "a";
     }
 
     // MODIFIES: this
@@ -176,6 +199,18 @@ public class Game {
             }
         }
         return false;
+    }
+
+    // EFFECTS: saves the world to file
+    private void save(String name) {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(world, name);
+            jsonWriter.close();
+            System.out.println("Saved world " + name + " to " + STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + STORE);
+        }
     }
 
     // MODIFIES: this
@@ -204,4 +239,16 @@ public class Game {
     public Simulate getSimulate() {
         return simulate;
     }
+
+    // MODIFIES: this
+    // EFFECTS: turn isOver true
+    public void makeGameOver() {
+        over = true;
+    }
+
+    // EFFECTS: return over
+    public Boolean isOver() {
+        return over;
+    }
+
 }

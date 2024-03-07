@@ -23,7 +23,7 @@ class GameTest {
     @Test
     public void testCreateWorld() {
         game.createWorld(4, 4);
-        assertEquals("空空空空空空空空空空空空空空空空", game.getGameWorld());
+        assertEquals("aaaaaaaaaaaaaaaa", game.getGameWorld());
     }
 
     @Test
@@ -111,11 +111,9 @@ class GameTest {
     public void testHandleInputReturn() {
         game.createWorld(4, 4);
         try {
-            game.handleInput('p');
-            game.handleInput('l');
-            game.handleInput('a');
-            game.handleInput('c');
+            game.handleInput('s');
             game.handleInput('e');
+            game.handleInput('t');
             game.handleInput(' ');
             game.handleInput('T');
             game.handleInput('i');
@@ -128,7 +126,7 @@ class GameTest {
         } catch (Exception e) {
             fail();
         }
-        assertEquals("place Tile 2 3", game.getInput());
+        assertEquals("set Tile 2 3", game.getInput());
 
 
         try {
@@ -180,7 +178,7 @@ class GameTest {
     public void testHandleCreateCommandPlace() {
         game.createWorld(4, 4);
         try {
-            game.handleCreateCommand("place Tile 2 2");
+            game.handleCreateCommand("set Tile 2 2");
         } catch (Exception e) {
             fail();
         }
@@ -212,21 +210,21 @@ class GameTest {
         game.createWorld(4, 4);
 
         try {
-            game.handleCreateCommand("place Tile 3 e");
+            game.handleCreateCommand("set Tile 3 e");
             fail();
         } catch (Exception e) {
             // do nothing when exception caught
         }
 
         try {
-            game.handleCreateCommand("place Tile -1 -2");
+            game.handleCreateCommand("set Tile -1 -2");
             fail();
         } catch (Exception e) {
             // do nothing when exception caught
         }
 
         try {
-            game.handleCreateCommand("place Tile 1.1 2");
+            game.handleCreateCommand("set Tile 1.1 2");
             fail();
         } catch (Exception e) {
             // do nothing when exception caught
@@ -282,12 +280,12 @@ class GameTest {
         } catch (Exception e) {
             fail();
         }
-        assertEquals("地死空空空空空空我空空空赢生空空", game.getGameWorld());
+        assertEquals("tdaaaaaapaaaesaa", game.getGameWorld());
     }
 
     @Test
     public void testEmptyVariationsNotSimulating() {
-        assertEquals("空", game.emptyVariations());
+        assertEquals("a", game.emptyVariations());
     }
 
     @Test

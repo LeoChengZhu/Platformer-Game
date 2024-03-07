@@ -1,10 +1,13 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Defines the game world and provides methods to operate on the game world
-public class World {
+public class World implements Writable {
 
     private static final int MINHEIGHT = 2;
     private static final int MINWIDTH = 2;
@@ -146,5 +149,12 @@ public class World {
     // EFFECTS returns width
     public int getWidth() {
         return width;
+    }
+
+    @Override
+    public JSONObject toJson(String name) {
+        JSONObject json = new JSONObject();
+        json.put(name, world);
+        return json;
     }
 }

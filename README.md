@@ -13,11 +13,9 @@ This project is interesting to me as I am interested in the process of game crea
 
 ## User Stories:
 - As a user, I want to be able to be able to know how to use the application.
-- As a user, I want to be able to create multiple different levels to work on. 
-- As a user, I want to be able to individually save multiple different levels.
-- As a user, I want to be able to individually load and view multiple different levels.
-- As a user, I want to be able to view the list of saves that I have created. 
-- As a user, I want to be able to delete the levels I created.
+- As a user, I want to be able to create levels to work on. 
+- As a user, I want to be able to save level to file.
+- As a user, I want to be able to load level from file.
 - As a user, I want to be able to add different objects that do different things into the level.
 - As a user, I want to be able to remove objects that was added into the level.
 - As a user, I want to be able to know what every object does when creating the level.
