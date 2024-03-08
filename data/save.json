@@ -1,0 +1,22 @@
+{"name": [
+    {
+        "ypos": 0,
+        "xpos": 0,
+        "type": "Empty"
+    },
+    {
+        "ypos": 0,
+        "xpos": 1,
+        "type": "Empty"
+    },
+    {
+        "ypos": 1,
+        "xpos": 0,
+        "type": "Empty"
+    },
+    {
+        "ypos": 1,
+        "xpos": 1,
+        "type": "Empty"
+    }
+]}

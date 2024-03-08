@@ -1,0 +1,127 @@
+{"name": [
+    {
+        "ypos": 0,
+        "xpos": 0,
+        "type": "Tile"
+    },
+    {
+        "ypos": 0,
+        "xpos": 1,
+        "type": "Death"
+    },
+    {
+        "ypos": 0,
+        "xpos": 2,
+        "type": "End"
+    },
+    {
+        "ypos": 0,
+        "xpos": 3,
+        "type": "Empty"
+    },
+    {
+        "ypos": 0,
+        "xpos": 4,
+        "type": "Empty"
+    },
+    {
+        "ypos": 1,
+        "xpos": 0,
+        "type": "Empty"
+    },
+    {
+        "ypos": 1,
+        "xpos": 1,
+        "type": "Empty"
+    },
+    {
+        "ypos": 1,
+        "xpos": 2,
+        "type": "Empty"
+    },
+    {
+        "ypos": 1,
+        "xpos": 3,
+        "type": "Empty"
+    },
+    {
+        "ypos": 1,
+        "xpos": 4,
+        "type": "Empty"
+    },
+    {
+        "ypos": 2,
+        "xpos": 0,
+        "type": "Empty"
+    },
+    {
+        "ypos": 2,
+        "xpos": 1,
+        "type": "Empty"
+    },
+    {
+        "ypos": 2,
+        "xpos": 2,
+        "type": "Empty"
+    },
+    {
+        "ypos": 2,
+        "xpos": 3,
+        "type": "Empty"
+    },
+    {
+        "ypos": 2,
+        "xpos": 4,
+        "type": "Empty"
+    },
+    {
+        "ypos": 3,
+        "xpos": 0,
+        "type": "Empty"
+    },
+    {
+        "ypos": 3,
+        "xpos": 1,
+        "type": "Empty"
+    },
+    {
+        "ypos": 3,
+        "xpos": 2,
+        "type": "Empty"
+    },
+    {
+        "ypos": 3,
+        "xpos": 3,
+        "type": "Empty"
+    },
+    {
+        "ypos": 3,
+        "xpos": 4,
+        "type": "Empty"
+    },
+    {
+        "ypos": 4,
+        "xpos": 0,
+        "type": "Empty"
+    },
+    {
+        "ypos": 4,
+        "xpos": 1,
+        "type": "Empty"
+    },
+    {
+        "ypos": 4,
+        "xpos": 2,
+        "type": "Empty"
+    },
+    {
+        "ypos": 4,
+        "xpos": 3,
+        "type": "Empty"
+    },
+    {
+        "ypos": 4,
+        "xpos": 4,
+        "type": "Spawn"
+    }
+]}

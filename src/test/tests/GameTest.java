@@ -3,15 +3,21 @@ package tests;
 import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
     public Game game;
+    public World world;
+    public JsonReader reader;
 
     @BeforeEach
     public void setup() {
+        reader = new JsonReader("./data/save.json");
         game = new Game();
+        world = new World(2, 2);
     }
 
     @Test
@@ -185,6 +191,57 @@ class GameTest {
         assertEquals("Tile", game.getWorld().getBlock(2, 2).getType());
     }
 
+    @Test
+    public void testHandleCreateCommandQuit() {
+        game.setWorld(world);
+        try {
+            game.handleCreateCommand("quit");
+        } catch (Exception e) {
+            fail();
+        }
+        assertTrue(game.isOver());
+        try {
+            World testWorld = reader.read("name");
+            assertEquals("Empty", testWorld.getBlock(0, 0).getType());
+            assertEquals("Empty", testWorld.getBlock(1, 0).getType());
+            assertEquals("Empty", testWorld.getBlock(0, 1).getType());
+            assertEquals("Empty", testWorld.getBlock(1, 1).getType());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testHandleCreateCommandSave() {
+        game.setWorld(world);
+        try {
+            game.handleCreateCommand("save");
+        } catch (Exception e) {
+            fail();
+        }
+        assertFalse(game.isOver());
+        try {
+            World testWorld = reader.read("name");
+            assertEquals("Empty", testWorld.getBlock(0, 0).getType());
+            assertEquals("Empty", testWorld.getBlock(1, 0).getType());
+            assertEquals("Empty", testWorld.getBlock(0, 1).getType());
+            assertEquals("Empty", testWorld.getBlock(1, 1).getType());
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void testHandleCreateCommandInvalid() {
+        game.createWorld(4, 4);
+        try {
+            game.handleCreateCommand("set Tile 2 -1");
+            fail();
+        } catch (Exception e) {
+            //pass
+        }
+    }
+
 
     @Test
     public void testHandleCreateCommandFill() {
@@ -350,5 +407,33 @@ class GameTest {
 
         game.stop();
         assertFalse(game.getSimulating());
+    }
+
+    @Test
+    public void testMakeGameOver() {
+        assertFalse(game.isOver());
+        game.makeGameOver();
+        assertTrue(game.isOver());
+    }
+
+    @Test
+    public void testMakeSetWorld() {
+        game.setWorld(world);
+        assertEquals(world, game.getWorld());
+    }
+
+    @Test
+    public void testSave() {
+        game.setWorld(world);
+        game.save("name");
+        try {
+            World testWorld = reader.read("name");
+            assertEquals("Empty", testWorld.getBlock(0, 0).getType());
+            assertEquals("Empty", testWorld.getBlock(1, 0).getType());
+            assertEquals("Empty", testWorld.getBlock(0, 1).getType());
+            assertEquals("Empty", testWorld.getBlock(1, 1).getType());
+        } catch (Exception e) {
+            fail();
+        }
     }
 }

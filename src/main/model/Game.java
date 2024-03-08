@@ -202,7 +202,7 @@ public class Game {
     }
 
     // EFFECTS: saves the world to file
-    private void save(String name) {
+    public void save(String name) {
         try {
             jsonWriter.open();
             jsonWriter.write(world, name);
