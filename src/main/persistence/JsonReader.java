@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 
 // Represents a reader that reads World from JSON data stored in file
+// Code adapted from persistence example
 public class JsonReader {
     private String source;
 
@@ -19,7 +20,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads world from file and returns it;
     // throws IOException if an error occurs reading data from file
     public World read(String name) throws IOException {
         String jsonData = readFile(source);
@@ -38,7 +39,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses world from JSON object and returns it
     private World parseWorld(JSONObject jsonObject, String name) {
         JSONArray jsonArray = jsonObject.getJSONArray(name);
         Object json = jsonArray.get(jsonArray.length() - 1);
