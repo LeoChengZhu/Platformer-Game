@@ -50,6 +50,35 @@ class GameTest {
     }
 
     @Test
+    // Actual update is tested in SimulateTest
+    public void testUpdateWhenGameIsNotOver() {
+        game.createWorld(4, 4);
+        try {
+            game.getWorld().setBlock("Spawn", 2, 2);
+        } catch (Exception e) {
+            fail();
+        }
+        game.play();
+        assertEquals("Player", game.getWorld().getBlock(2, 1).getType());
+        assertTrue(game.getSimulating());
+        game.update();
+        assertTrue(game.getSimulating());
+    }
+
+    @Test
+    // Actual update is tested in SimulateTest
+    public void testUpdateWhenNotSimulating() {
+        game.createWorld(4, 4);
+        try {
+            game.getWorld().setBlock("Spawn", 2, 2);
+        } catch (Exception e) {
+            fail();
+        }
+        game.update();
+        assertFalse(game.getSimulating());
+    }
+
+    @Test
     public void testHandleInput() {
         try {
             game.handleInput('a');
@@ -317,6 +346,12 @@ class GameTest {
 
         try {
             game.handleCreateCommand("fill Tile 1 3");
+        } catch (Exception e) {
+            fail();
+        }
+
+        try {
+            game.handleCreateCommand("a a a a a a a");
         } catch (Exception e) {
             fail();
         }
