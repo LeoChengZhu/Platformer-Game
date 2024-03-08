@@ -11,6 +11,7 @@ public class Simulate {
 
     // EFFECTS: constructs with game over being false
     public Simulate() {
+        input = '0';
         gameOver = false;
     }
 
@@ -51,7 +52,7 @@ public class Simulate {
     public void reflectPlayerToWorld() {
         gameWorld.getWorld().set(player.getXpos() + (player.getYpos() * gameWorld.getWidth()),player);
         for (int i = 0; i < gameWorld.getWorld().size(); i++) {
-            if (gameWorld.getWorld().get(i) == player
+            if (gameWorld.getWorld().get(i).getType().equals("Player")
                     && i != (player.getXpos() + (player.getYpos() * gameWorld.getWidth()))) {
                 try {
                     gameWorld.setBlock("Empty", i % gameWorld.getWidth(),
@@ -249,5 +250,11 @@ public class Simulate {
     public Player getPlayer() {
         return player;
     }
+
+    // EFFECTS: returns gameWorld
+    public World getGameWorld() {
+        return gameWorld;
+    }
+
 
 }
