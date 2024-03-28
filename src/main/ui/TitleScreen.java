@@ -46,19 +46,27 @@ public class TitleScreen extends JFrame {
         validate();
     }
 
-    private void initializeWorldCreation() {
-        width = INITIALWORLDWIDTH;
-        height = INITIALWORLDHEIGHT;
+    private void initializeWorldCreationPanel() {
         createOptions = new JPanel();
-        createOptions.setLayout(new GridLayout(3,3));
+        createOptions.setLayout(new GridLayout(3, 3));
         createOptions.setSize(new Dimension(0, 0));
         add(createOptions, BorderLayout.CENTER);
+    }
+
+    private void initializeWorldCreationLabels() {
         widthLabel = new JLabel();
         heightLabel = new JLabel();
         widthLabel.setSize(20,20);
         heightLabel.setSize(20,20);
         widthLabel.setHorizontalAlignment(CENTER);
         heightLabel.setHorizontalAlignment(CENTER);
+    }
+
+    private void initializeWorldCreation() {
+        width = INITIALWORLDWIDTH;
+        height = INITIALWORLDHEIGHT;
+        initializeWorldCreationPanel();
+        initializeWorldCreationLabels();
         JSlider widthSlider = new JSlider(JSlider.VERTICAL, 2, 32, 17);
         JSlider heightSlider = new JSlider(JSlider.VERTICAL, 2, 32, 17);
         widthLabel.setText("Width: " + width);
@@ -77,7 +85,6 @@ public class TitleScreen extends JFrame {
         heightSlider.setPaintLabels(true);
         TitleButtons returnButton = new ReturnButton(this, createOptions);
         TitleButtons createWorldButton = new CreateWorldButton(this, createOptions);
-
     }
 
     // MODIFIES: this

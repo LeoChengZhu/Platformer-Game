@@ -27,8 +27,7 @@ public class SaveButton extends Buttons {
 
     private class ClickHandler implements ActionListener {
 
-        // EFFECTS: sets active tool to the PlayShape tool
-        //          called by the framework when the tool is clicked
+        // EFFECTS: sets active button to this button
         @Override
         public void actionPerformed(ActionEvent e) {
             gameScreen.setActiveButton(SaveButton.this);

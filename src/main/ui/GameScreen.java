@@ -128,32 +128,32 @@ public class GameScreen extends JFrame {
         setSize(new Dimension(width, height + 28));
     }
 
-    // EFFECTS: if activeTool != null, then mousePressedInDrawingArea is invoked on activeTool, depends on the
-    //          type of the tool which is currently activeTool
+    // EFFECTS: if activeButton != null, then mousePressed is invoked on activeButton, depends on the
+    //          type of the button which is currently active
     private void handleMousePressed(MouseEvent e)  {
         if (activeButton != null) {
             activeButton.mousePressed(e);
         }
     }
 
-    // EFFECTS: if activeTool != null, then mouseReleasedInDrawingArea is invoked on activeTool, depends on the
-    //          type of the tool which is currently activeTool
+    // EFFECTS: if activeButton != null, then mouseReleased is invoked on activeButton, depends on the
+    //          type of the button which is currently active
     private void handleMouseReleased(MouseEvent e) {
         if (activeButton != null) {
             activeButton.mouseReleased(e);
         }
     }
 
-    // EFFECTS: if activeTool != null, then mouseClickedInDrawingArea is invoked on activeTool, depends on the
-    //          type of the tool which is currently activeTool
+    // EFFECTS: if activeButton != null, then mouseClicked is invoked on activeButton, depends on the
+    //          type of the button which is currently active
     private void handleMouseClicked(MouseEvent e) {
         if (activeButton != null) {
             activeButton.mouseClicked(e);
         }
     }
 
-    // EFFECTS: if activeTool != null, then mouseDraggedInDrawingArea is invoked on activeTool, depends on the
-    //          type of the tool which is currently activeTool
+    // EFFECTS: if activeButton != null, then mouseDragged is invoked on activeButton, depends on the
+    //          type of the button which is currently active
     private void handleMouseDragged(MouseEvent e) {
         if (activeButton != null) {
             activeButton.mouseDragged(e);
@@ -222,22 +222,22 @@ public class GameScreen extends JFrame {
 
     private class MouseListener extends MouseAdapter {
 
-        // EFFECTS: Forward mouse pressed event to the active tool
+        // EFFECTS: Forward mouse pressed event to the active button
         public void mousePressed(MouseEvent e) {
             handleMousePressed(translateEvent(e));
         }
 
-        // EFFECTS: Forward mouse released event to the active tool
+        // EFFECTS: Forward mouse released event to the active button
         public void mouseReleased(MouseEvent e) {
             handleMouseReleased(translateEvent(e));
         }
 
-        // EFFECTS:Forward mouse clicked event to the active tool
+        // EFFECTS:Forward mouse clicked event to the active button
         public void mouseClicked(MouseEvent e) {
             handleMouseClicked(translateEvent(e));
         }
 
-        // EFFECTS:Forward mouse dragged event to the active tool
+        // EFFECTS:Forward mouse dragged event to the active button
         public void mouseDragged(MouseEvent e) {
             handleMouseDragged(translateEvent(e));
         }

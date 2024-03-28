@@ -4,7 +4,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
 
-//Visual component of each block in world
+//Visual component of player in world
 //Code partially adapted from SimpleDrawingPlayer
 
 public class PlayerShape extends BlockShape {

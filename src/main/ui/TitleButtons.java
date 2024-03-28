@@ -25,7 +25,7 @@ public abstract class TitleButtons {
         return button;
     }
 
-    // EFFECTS: creates button to activate tool
+    // EFFECTS: creates button
     protected abstract void createButton(JComponent parent);
 
     // MODIFIES: parent
@@ -34,7 +34,7 @@ public abstract class TitleButtons {
         parent.add(button);
     }
 
-    // EFFECTS: adds a listener for this tool
+    // EFFECTS: adds a listener for this button
     protected abstract void addListener();
 
 
@@ -42,12 +42,12 @@ public abstract class TitleButtons {
         return active;
     }
 
-    // EFFECTS: sets this Tool's active field to true
+    // EFFECTS: sets this button's active field to true
     public void activate() {
         active = true;
     }
 
-    // EFFECTS: sets this Tool's active field to false
+    // EFFECTS: sets this button's active field to false
     public void deactivate() {
         active = false;
     }
