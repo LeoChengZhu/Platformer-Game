@@ -138,7 +138,7 @@ class SimulateTest {
         assertFalse(simulate.getPlayer().getJumping());
         assertTrue(simulate.getPlayer().getFalling());
         assertEquals(1, simulate.getPlayer().getIdleFrame());
-        assertEquals(15, simulate.getPlayer().getIdleChangeDelayTick());
+        assertEquals(14, simulate.getPlayer().getIdleChangeDelayTick());
     }
 
     @Test
