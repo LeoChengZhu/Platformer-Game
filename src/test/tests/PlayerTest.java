@@ -21,6 +21,9 @@ class PlayerTest {
         assertEquals("Player", player.getType());
         assertEquals(2, player.getJumpTick());
         assertEquals(10, player.getAirTick());
+        assertEquals(false, player.getIsLeft());
+        assertEquals(1, player.getIdleFrame());
+        assertEquals(15, player.getIdleChangeDelayTick());
         assertFalse(player.getJumping());
         assertFalse(player.getFalling());
     }
@@ -176,6 +179,31 @@ class PlayerTest {
         player.setYpos(6);
         assertEquals(1, player.getXpos());
         assertEquals(6, player.getYpos());
+    }
+
+    @Test
+    public void testSetIdleFrame() {
+        player.setIdleFrame(3);
+        assertEquals(3, player.getIdleFrame());
+    }
+
+    @Test
+    public void testSetIsLeft() {
+        player.setIsLeft(true);
+        assertEquals(true, player.getIsLeft());
+    }
+
+    @Test
+    public void testIdleChangeDelayTickTick() {
+        player.idleChangeDelayTickTick();
+        assertEquals(14, player.getIdleChangeDelayTick());
+    }
+
+    @Test
+    public void testResetIdleChangeDelayTick() {
+        player.idleChangeDelayTickTick();
+        player.resetIdleChangeDelayTickTick();
+        assertEquals(15, player.getIdleChangeDelayTick());
     }
 
 

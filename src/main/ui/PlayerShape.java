@@ -1,4 +1,7 @@
-package model;
+package ui;
+
+import model.Player;
+import ui.BlockShape;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

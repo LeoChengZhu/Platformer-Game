@@ -1,4 +1,4 @@
-package model;
+package ui;
 
 import java.awt.*;
 import java.util.Objects;

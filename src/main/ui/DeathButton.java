@@ -1,8 +1,6 @@
 package ui;
 
 
-import model.BlockShape;
-
 import javax.swing.*;
 import java.awt.*;
 

@@ -119,6 +119,8 @@ class SimulateTest {
         assertEquals("Player", world.getBlock(0,4).getType());
         assertTrue(simulate.getPlayer().getJumping());
         assertFalse(simulate.getPlayer().getFalling());
+        assertEquals(1, simulate.getPlayer().getIdleFrame());
+        assertEquals(15, simulate.getPlayer().getIdleChangeDelayTick());
     }
 
     @Test
@@ -135,6 +137,8 @@ class SimulateTest {
         assertEquals("Player", world.getBlock(0,3).getType());
         assertFalse(simulate.getPlayer().getJumping());
         assertTrue(simulate.getPlayer().getFalling());
+        assertEquals(1, simulate.getPlayer().getIdleFrame());
+        assertEquals(15, simulate.getPlayer().getIdleChangeDelayTick());
     }
 
     @Test
@@ -151,6 +155,7 @@ class SimulateTest {
         assertEquals("Player", world.getBlock(0,5).getType());
         assertFalse(simulate.getPlayer().getJumping());
         assertFalse(simulate.getPlayer().getFalling());
+        assertTrue(simulate.getPlayer().getIsLeft());
     }
 
     @Test
@@ -167,6 +172,7 @@ class SimulateTest {
         assertEquals("Player", world.getBlock(5,5).getType());
         assertFalse(simulate.getPlayer().getJumping());
         assertFalse(simulate.getPlayer().getFalling());
+        assertFalse(simulate.getPlayer().getIsLeft());
     }
 
     @Test
@@ -183,6 +189,8 @@ class SimulateTest {
         assertEquals("Player", world.getBlock(0,4).getType());
         assertTrue(simulate.getPlayer().getJumping());
         assertTrue(simulate.getPlayer().getFalling());
+        assertEquals(1, simulate.getPlayer().getIdleFrame());
+        assertEquals(15, simulate.getPlayer().getIdleChangeDelayTick());
     }
 
 
@@ -579,6 +587,7 @@ class SimulateTest {
         assertTrue(simulate.getPlayer().getFalling());
     }
 
+
     @Test
     public void testNeutralBehavioursDeath() throws BlockAboveSpawnException,
             SpawnAlreadyExistsException, IllegalSpawnException {
@@ -608,6 +617,73 @@ class SimulateTest {
         simulate.reflectPlayerToWorld();
         simulate.neutralBehaviours();
         assertTrue(simulate.isGameOver());
+    }
+
+    @Test
+    public void testNeutralBehavioursIdleTick() {
+        simulate.initializeSimulation(world);
+        assertFalse(simulate.getPlayer().getJumping());
+        assertFalse(simulate.getPlayer().getFalling());
+        simulate.reflectPlayerToWorld();
+        simulate.neutralBehaviours();
+        assertFalse(simulate.getPlayer().getJumping());
+        assertEquals(14, simulate.getPlayer().getIdleChangeDelayTick());
+        assertEquals(1, simulate.getPlayer().getIdleFrame());
+    }
+
+    @Test
+    public void testNeutralBehavioursIdleTickZero() {
+        simulate.initializeSimulation(world);
+        assertFalse(simulate.getPlayer().getJumping());
+        assertFalse(simulate.getPlayer().getFalling());
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.reflectPlayerToWorld();
+        simulate.neutralBehaviours();
+        assertFalse(simulate.getPlayer().getJumping());
+        assertEquals(15, simulate.getPlayer().getIdleChangeDelayTick());
+        assertEquals(2, simulate.getPlayer().getIdleFrame());
+    }
+
+    @Test
+    public void testNeutralBehavioursIdleTickZero2() {
+        simulate.initializeSimulation(world);
+        assertFalse(simulate.getPlayer().getJumping());
+        assertFalse(simulate.getPlayer().getFalling());
+        simulate.getPlayer().setIdleFrame(2);
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.getPlayer().idleChangeDelayTickTick();
+        simulate.reflectPlayerToWorld();
+        simulate.neutralBehaviours();
+        assertFalse(simulate.getPlayer().getJumping());
+        assertEquals(15, simulate.getPlayer().getIdleChangeDelayTick());
+        assertEquals(1, simulate.getPlayer().getIdleFrame());
     }
 
     @Test

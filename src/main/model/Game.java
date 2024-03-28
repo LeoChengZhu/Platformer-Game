@@ -1,6 +1,8 @@
 package model;
 
 import persistence.JsonWriter;
+import ui.BlockShape;
+import ui.PlayerShape;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
