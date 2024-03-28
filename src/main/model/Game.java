@@ -142,13 +142,7 @@ public class Game {
     }
 
 
-    // EFFECTS: returns game world as a string with different character representing different blocks:
-    //          "Tile"   -> "t"
-    //          "Empty"  -> " " (simulating), "a" (not simulating)
-    //          "Spawn"  -> "s"
-    //          "End"    -> "e"
-    //          "Death"  -> "d"
-    //          "Player" -> "p"
+    // EFFECTS: returns game world as a list of BlockShapes with different colors representing different blocks:
     @SuppressWarnings("methodlength")
     public List<BlockShape> getGameWorld() {
         List<Blocks> gameWorld = world.getWorld();
@@ -195,7 +189,7 @@ public class Game {
 
 
 
-    // EFFECTS: returns character representing "Empty" depending on the game state
+    // EFFECTS: returns BlockShape representing "Empty" depending on the game state
     public BlockShape emptyVariations(Blocks block) {
         if (simulating) {
             return new BlockShape(

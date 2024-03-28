@@ -20,11 +20,13 @@ public class PlayerShape extends BlockShape {
     private static final String IDLE2RIGHT = "./data/idleframe2right.png";
     private static final String AIRRIGHT = "./data/airframeright.png";
 
+    // EFFECTS: Constructor
     public PlayerShape(int x, int y, Color color, Player player) {
         super(x,y,color);
         this.player = player;
     }
 
+    // EFFECTS: draws image depending on state of the player onto graphics element
     @Override
     public void draw(Graphics g) {
         String source = "";

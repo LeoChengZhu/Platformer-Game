@@ -1,17 +1,15 @@
 package ui;
 
-import jdk.nio.Channels;
+
 import model.World;
 import persistence.JsonReader;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import static javax.swing.SwingConstants.CENTER;
+
+// a class the represents the title screen
 
 public class TitleScreen extends JFrame {
     public static final int INITIALWIDTH = 1000;
@@ -28,6 +26,7 @@ public class TitleScreen extends JFrame {
     private int width;
     private int height;
 
+    // EFFECTS: Constructor
     public TitleScreen() {
         super();
         jsonReader = new JsonReader(STORE);
@@ -46,6 +45,8 @@ public class TitleScreen extends JFrame {
         validate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes panel for graphic elements when creating world
     private void initializeWorldCreationPanel() {
         createOptions = new JPanel();
         createOptions.setLayout(new GridLayout(3, 3));
@@ -53,6 +54,8 @@ public class TitleScreen extends JFrame {
         add(createOptions, BorderLayout.CENTER);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes labels for sliders
     private void initializeWorldCreationLabels() {
         widthLabel = new JLabel();
         heightLabel = new JLabel();
@@ -62,6 +65,8 @@ public class TitleScreen extends JFrame {
         heightLabel.setHorizontalAlignment(CENTER);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes screen for creating world
     private void initializeWorldCreation() {
         width = INITIALWORLDWIDTH;
         height = INITIALWORLDHEIGHT;
@@ -88,7 +93,8 @@ public class TitleScreen extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS:  sets the given Button as the activeButton
+    // EFFECTS: sets the given Button as the activeButton, perform different tasks
+    //          when button is clicked (set active)
     public void setActiveButton(TitleButtons button) {
         if (activeButton != null) {
             activeButton.deactivate();
@@ -117,6 +123,8 @@ public class TitleScreen extends JFrame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: intializes screen for title screen
     public void initializeTitleScreen() {
         startOptions = new JPanel();
         startOptions.setLayout(new GridLayout(0, 1));
@@ -127,6 +135,8 @@ public class TitleScreen extends JFrame {
         validate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: loads game from save file and starts game on new screen
     public void loadGame() {
         try {
             System.out.println("Loaded world from " + STORE);
@@ -137,6 +147,8 @@ public class TitleScreen extends JFrame {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: starts game on new screen with new world
     public void newGame() {
         try {
             dispose();
@@ -147,7 +159,8 @@ public class TitleScreen extends JFrame {
     }
 
     private class WidthSlider implements ChangeListener {
-
+        // MODIFIES: this
+        // EFFECTS: records slider change
         @Override
         public void stateChanged(ChangeEvent e) {
             JSlider source = (JSlider)e.getSource();
@@ -159,6 +172,8 @@ public class TitleScreen extends JFrame {
 
     private class HeightSlider implements ChangeListener {
 
+        // MODIFIES: this
+        // EFFECTS: records slider change
         @Override
         public void stateChanged(ChangeEvent e) {
             JSlider source = (JSlider)e.getSource();

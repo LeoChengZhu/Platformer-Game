@@ -12,12 +12,15 @@ public class BlockShape {
     private static final int SIDE = 20;
     private Color color;
 
+    // EFFECTS: Constructor
     public BlockShape(int x, int y, Color color) {
         this.xpos = x;
         this.ypos = y;
         this.color = color;
     }
 
+    // EFFECTS: draws rectangles with corresponding size, coordinates,
+    //          and color onto graphics component
     public void draw(Graphics g) {
         g.fillRect(xpos, ypos, SIDE, SIDE);
         g.setColor(color);
@@ -39,19 +42,24 @@ public class BlockShape {
         return containsX(point.x) && containsY(point.y);
     }
 
+    // EFFECTS: returns xpos
     public int getXpos() {
         return xpos;
     }
 
+    // EFFECTS: returns ypos
     public int getYpos() {
         return ypos;
     }
 
+    // EFFECTS: returns color
     public Color getColor() {
         return color;
     }
 
 
+    // EFFECTS: overrides equals so it compares, xpos, ypos, and rgb values of color
+    //          when o is isntance of BlockShape
     @Override
     public boolean equals(Object o) {
         if (this == o) {

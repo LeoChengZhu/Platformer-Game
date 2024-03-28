@@ -25,3 +25,23 @@ This project is interesting to me as I am interested in the process of game crea
 - As a user, I want to be able to complete the levels I created.
 - As a user, I want to be able to fail the levels I created.
 - As a user, I want to be able to view the levels I have created. 
+
+# Instructions for Grader
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking either 
+load, or create new world, then after entering the world editing stage, clicking on any of "Tile", 
+"Empty", "Spawn", "Death", or "End" button, and then by clicking the visualization of the world, 
+will add the corresponding item into the world, adding Xs(Blocks) to a Y(World).
+- You can generate the other required actions by having a spawn placed in the world, then pressing
+the "Play" button, will create a player that will interact with the previously placed blcoks,
+differently. The game is controlled by 'w'(jump), 'a'(move left), 'd'(move right) and 'o' (end game). Player can move,
+through "Empty", player will be put back on top of "Spawn" when touching "Death" in any way, you will be put out of 
+playing mode if player touches "End", "Tile" and "Spawn" will stop player.
+from moving through them.
+- To save the current world, click the "Save" button, or the "Quit" button, 
+note that the "Quite" button will put you back to the screen where it gives the option
+to select "Load" or "New World"
+- To load the application, click the load button when the program begins, or quit button to
+go back to the beginning screen.
+- You can locate my visual component by having a spawn placed in world then clicking play,
+the visual element is the model of the player, the exact files can be found in the data folder, where the saves
+are located.

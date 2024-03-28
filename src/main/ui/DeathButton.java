@@ -3,13 +3,17 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+//a class that represents a button used for placing death blocks
 
 public class DeathButton extends BlockButton {
 
+    // EFFECTS: Constructor
     public DeathButton(GameScreen gameScreen, JComponent parent) {
         super(gameScreen, parent);
     }
 
+    // MODIFIES: gameScreen.getGame().getWorld()
+    // EFFECTS: sets block containing point to "Death"
     @Override
     public void alterBlockAt(Point point) {
         BlockShape shape = gameScreen.getBlockOnScreen(point);
@@ -24,6 +28,7 @@ public class DeathButton extends BlockButton {
         }
     }
 
+    // EFFECTS: creates button, and adds it to parent
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Death");

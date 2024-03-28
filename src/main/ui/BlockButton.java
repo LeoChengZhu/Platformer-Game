@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
+// a class that represents buttons used to add blocks into world
 public abstract class BlockButton extends Buttons {
 
+    // EFFECTS: Constructor
     public BlockButton(GameScreen gameScreen, JComponent parent) {
         super(gameScreen, parent);
     }

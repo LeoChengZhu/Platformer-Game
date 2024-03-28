@@ -7,17 +7,18 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+// a class that represents the screen when the game is running
 
 public class GameScreen extends JFrame {
     public static final int INITIALWIDTH = 1000;
     public static final int INITIALHEIGHT = 700;
     private static final int INTERVAL = 25;
-    private static final String STORE = "./data/save.json";
     private Game game;
     private Screen currentScreen;
     private Buttons activeButton;
     private JPanel buttonArea;
 
+    // EFFECTS: Constructor
     public GameScreen(World world) throws IOException, InterruptedException {
         super();
         game = new Game();
@@ -27,6 +28,8 @@ public class GameScreen extends JFrame {
         startTicks();
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes graphics components and adds listeners
     public void initialize() {
         initializeGraphics();
         initializeInteraction();
@@ -61,6 +64,7 @@ public class GameScreen extends JFrame {
         updateScreen();
     }
 
+    // EFFECTS: returns game
     public Game getGame() {
         return game;
     }
@@ -77,6 +81,8 @@ public class GameScreen extends JFrame {
         validate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes graphic components
     private void initializeGraphics() {
         addNewScreen();
         buttonArea = new JPanel();
@@ -111,6 +117,8 @@ public class GameScreen extends JFrame {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates new Screen
     private void addNewScreen() {
         Screen newScreen = new Screen();
         currentScreen = newScreen;
@@ -119,11 +127,15 @@ public class GameScreen extends JFrame {
         validate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: updates current screen with updates in world
     private void updateScreen() {
         currentScreen.setShapes(game.getGameWorld());
         repaint();
     }
 
+    // MODIFIES: this
+    // EFFECTS: resizes window according to input
     private void resizeWindow(int width, int height) {
         setSize(new Dimension(width, height + 28));
     }
@@ -166,7 +178,8 @@ public class GameScreen extends JFrame {
     }
 
     // MODIFIES: this
-    // EFFECTS:  sets the given Button as the activeButton
+    // EFFECTS: sets the given Button as the activeButton, and perform different actions,
+    //          depending on which button is clicked(set active)
     public void setActiveButton(Buttons button) {
         if (activeButton != null) {
             activeButton.deactivate();
@@ -202,6 +215,7 @@ public class GameScreen extends JFrame {
 
 
     private class KeyHandler implements KeyListener {
+        // EFFECTS: forward key event into game
         @Override
         public void keyTyped(KeyEvent e) {
             try {
@@ -211,10 +225,12 @@ public class GameScreen extends JFrame {
             }
         }
 
+        // EFFECTS: do nothing
         @Override
         public void keyPressed(KeyEvent e) {
         }
 
+        // EFFECTS: do nothing
         @Override
         public void keyReleased(KeyEvent e) {
         }

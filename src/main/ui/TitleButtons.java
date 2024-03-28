@@ -3,11 +3,13 @@ package ui;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 
+// a class that represents buttons used for the title screen
 public abstract class TitleButtons {
     protected JButton button;
     protected TitleScreen titleScreen;
     private boolean active;
 
+    // EFFECTS: Constructor
     public TitleButtons(TitleScreen titleScreen, JComponent parent) {
         this.titleScreen = titleScreen;
         createButton(parent);
@@ -37,7 +39,7 @@ public abstract class TitleButtons {
     // EFFECTS: adds a listener for this button
     protected abstract void addListener();
 
-
+    // EFFECTS: returns active
     public boolean isActive() {
         return active;
     }
