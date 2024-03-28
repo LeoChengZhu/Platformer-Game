@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
@@ -28,8 +32,9 @@ class GameTest {
 
     @Test
     public void testCreateWorld() {
-        game.createWorld(4, 4);
-        assertEquals("aaaaaaaaaaaaaaaa", game.getGameWorld());
+        game.createWorld(4, 5);
+        assertEquals(4, game.getWorld().getWidth());
+        assertEquals(5, game.getWorld().getHeight());
     }
 
     @Test
@@ -372,12 +377,53 @@ class GameTest {
         } catch (Exception e) {
             fail();
         }
-        assertEquals("tdaaaaaapaaaesaa", game.getGameWorld());
+        List<Blocks> blocks = game.getWorld().getWorld();
+        for (int i = 0; i < game.getGameWorld().size(); i++) {
+            assertEquals(blocks.get(i).getXpos() * 20, game.getGameWorld().get(i).getXpos());
+            assertEquals(blocks.get(i).getYpos() * 20, game.getGameWorld().get(i).getYpos());
+            if (blocks.get(i).getType().equals("Tile")) {
+                assertEquals(135, game.getGameWorld().get(i).getColor().getRed());
+                assertEquals(62, game.getGameWorld().get(i).getColor().getGreen());
+                assertEquals(35, game.getGameWorld().get(i).getColor().getBlue());
+            }
+
+            if (blocks.get(i).getType().equals("Empty")) {
+                assertEquals(190, game.getGameWorld().get(i).getColor().getRed());
+                assertEquals(223, game.getGameWorld().get(i).getColor().getGreen());
+                assertEquals(228, game.getGameWorld().get(i).getColor().getBlue());
+            }
+
+            if (blocks.get(i).getType().equals("Spawn")) {
+                assertEquals(0, game.getGameWorld().get(i).getColor().getRed());
+                assertEquals(255, game.getGameWorld().get(i).getColor().getGreen());
+                assertEquals(0, game.getGameWorld().get(i).getColor().getBlue());
+            }
+
+            if (blocks.get(i).getType().equals("End")) {
+                assertEquals(255, game.getGameWorld().get(i).getColor().getRed());
+                assertEquals(255, game.getGameWorld().get(i).getColor().getGreen());
+                assertEquals(0, game.getGameWorld().get(i).getColor().getBlue());
+            }
+
+            if (blocks.get(i).getType().equals("Death")) {
+                assertEquals(255, game.getGameWorld().get(i).getColor().getRed());
+                assertEquals(0, game.getGameWorld().get(i).getColor().getGreen());
+                assertEquals(0, game.getGameWorld().get(i).getColor().getBlue());
+            }
+
+            if (blocks.get(i).getType().equals("Player")) {
+                assertEquals(0, game.getGameWorld().get(i).getColor().getRed());
+                assertEquals(0, game.getGameWorld().get(i).getColor().getGreen());
+                assertEquals(0, game.getGameWorld().get(i).getColor().getBlue());
+            }
+        }
     }
 
     @Test
     public void testEmptyVariationsNotSimulating() {
-        assertEquals("a", game.emptyVariations());
+        assertEquals(
+                new BlockShape(100, 100, new Color(190,223,228)),
+                game.emptyVariations(new Empty(5, 5)));
     }
 
     @Test
@@ -390,7 +436,9 @@ class GameTest {
         }
         game.play();
         assertTrue(game.getSimulating());
-        assertEquals(" ", game.emptyVariations());
+        assertEquals(
+                new BlockShape(100, 100, new Color(255,255,255)),
+                game.emptyVariations(new Empty(5, 5)));
         assertNotNull(game.getSimulating());
     }
 

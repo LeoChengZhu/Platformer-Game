@@ -2,7 +2,9 @@ package model;
 
 import persistence.JsonWriter;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Character.isISOControl;
@@ -25,6 +27,7 @@ public class Game {
         input = "";
         jsonWriter = new JsonWriter(STORE);
         over = false;
+        simulate = new Simulate();
     }
 
     // MODIFIES: this
@@ -145,40 +148,63 @@ public class Game {
     //          "Death"  -> "d"
     //          "Player" -> "p"
     @SuppressWarnings("methodlength")
-    public String getGameWorld() {
+    public List<BlockShape> getGameWorld() {
         List<Blocks> gameWorld = world.getWorld();
-        StringBuilder worldString = new StringBuilder();
+        List<BlockShape> worldShapes = new ArrayList<>();
         for (Blocks object:gameWorld) {
             switch (object.getType()) {
                 case "Tile":
-                    worldString.append("t");
+                    worldShapes.add(new BlockShape(
+                            object.getXpos() * 20,
+                            object.getYpos()  * 20,
+                            new Color(135, 62, 35)));
                     break;
                 case "Empty":
-                    worldString.append(emptyVariations());
+                    worldShapes.add(emptyVariations(object));
                     break;
                 case "Spawn":
-                    worldString.append("s");
+                    worldShapes.add(new BlockShape(
+                            object.getXpos() * 20,
+                            object.getYpos()  * 20,
+                            new Color(0, 255, 0)));
                     break;
                 case "End":
-                    worldString.append("e");
+                    worldShapes.add(new BlockShape(
+                            object.getXpos() * 20,
+                            object.getYpos()  * 20,
+                            new Color(255, 255, 0)));
                     break;
                 case "Death":
-                    worldString.append("d");
+                    worldShapes.add(new BlockShape(
+                            object.getXpos() * 20,
+                            object.getYpos()  * 20,
+                            new Color(255, 0, 0)));
                     break;
                 case "Player":
-                    worldString.append("p");
+                    worldShapes.add(new PlayerShape(
+                            object.getXpos() * 20,
+                            object.getYpos()  * 20,
+                            new Color(0, 0, 0), (Player) object));
                     break;
             }
         }
-        return worldString.toString();
+        return worldShapes;
     }
 
+
+
     // EFFECTS: returns character representing "Empty" depending on the game state
-    public String emptyVariations() {
+    public BlockShape emptyVariations(Blocks block) {
         if (simulating) {
-            return " ";
+            return new BlockShape(
+                    block.getXpos() * 20,
+                    block.getYpos()  * 20,
+                    new Color(255, 255, 255));
         }
-        return "a";
+        return new BlockShape(
+                block.getXpos() * 20,
+                block.getYpos()  * 20,
+                new Color(190,223,228));
     }
 
     // MODIFIES: this
@@ -186,7 +212,6 @@ public class Game {
     public void play() {
         if (checkForSpawn()) {
             simulating = true;
-            simulate = new Simulate();
             simulate.initializeSimulation(world);
         }
     }
@@ -250,5 +275,6 @@ public class Game {
     public Boolean isOver() {
         return over;
     }
+    
 
 }

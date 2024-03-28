@@ -1,6 +1,13 @@
 package tests;
 
 import model.*;
+import model.Blocks;
+import model.Spawn;
+import model.Tile;
+import model.BlockAboveSpawnException;
+import model.FillWithSpawnException;
+import model.IllegalSpawnException;
+import model.SpawnAlreadyExistsException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

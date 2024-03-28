@@ -7,6 +7,9 @@ public class Player extends Blocks {
 
     private boolean falling;
     private boolean jumping;
+    private boolean isLeft;
+    private int idleChangeDelayTick;
+    private int idleFrame;
     private int jumpTick;
     private int airTick;
 
@@ -16,10 +19,13 @@ public class Player extends Blocks {
     //          sets type to "Player"
     public Player(int xpos, int ypos) {
         super(xpos, ypos);
+        isLeft = false;
+        idleFrame = 1;
         falling = false;
         jumping = false;
         jumpTick = 2;
         airTick = 10;
+        idleChangeDelayTick = 15;
         type = "Player";
     }
 
@@ -113,6 +119,30 @@ public class Player extends Blocks {
         this.ypos = ypos;
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets whether the player is facing left
+    public void setIsLeft(Boolean bool) {
+        isLeft = bool;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the player's idle frame
+    public void setIdleFrame(int n) {
+        idleFrame = n;
+    }
+
+    // MODIFIES: this
+    // EFFECTS:  -1 on the player's idle frame delay
+    public void idleChangeDelayTickTick() {
+        idleChangeDelayTick--;
+    }
+
+    // MODIFIES: this
+    // EFFECTS:  set the player's idle frame delay to 10
+    public void resetIdleChangeDelayTickTick() {
+        idleChangeDelayTick = 15;
+    }
+
     // EFFECTS: returns the jumpTick
     public int getJumpTick() {
         return jumpTick;
@@ -121,5 +151,20 @@ public class Player extends Blocks {
     // EFFECTS: returns the airTick
     public int getAirTick() {
         return airTick;
+    }
+
+    // EFFECTS: returns if the palyer is facing left
+    public Boolean getIsLeft() {
+        return isLeft;
+    }
+
+    // EFFECTS: returns the player's idle frame
+    public int getIdleFrame() {
+        return idleFrame;
+    }
+
+    // EFFECTS: returns the player's idle frame delay
+    public int getIdleChangeDelayTick() {
+        return idleChangeDelayTick;
     }
 }

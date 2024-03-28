@@ -3,7 +3,7 @@
 # 2D Platformer Level Creator
 
 ## What will the application do?
-The application should be able to allow the user to create a blank level that is within a certain size, then to add objects(terrain), a character, a start and end point then to be able to control the character in the created level. The application should also be able to save and load multiple different levels individually. 
+The application should be able to allow the user to create a blank level that is within a certain size, then to add objects(terrain), a character, a gameScreen and end point then to be able to control the character in the created level. The application should also be able to save and load multiple different levels individually. 
 
 ## Who will use it?
 This application will be for people interested in creating a simple 2D platformer of their own as well as people that are interested in this genre as well.

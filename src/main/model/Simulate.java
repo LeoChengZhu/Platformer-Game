@@ -97,6 +97,7 @@ public class Simulate {
         if (!player.getJumping() && !player.getFalling()) {
             neutralBehaviours();
         }
+
         this.input = '0';
     }
 
@@ -107,6 +108,7 @@ public class Simulate {
     //          left is "Death" -> respawn player
     //          left is "End" -> game is over
     public void leftBehaviours() {
+        player.setIsLeft(true);
         if (!(player.getXpos() - 1 < 0)) {
             if (gameWorld.getBlock(player.getXpos() - 1, player.getYpos()).getType().equals("Empty")) {
                 player.moveLeft();
@@ -127,6 +129,7 @@ public class Simulate {
     //          right is "Death" -> respawn player
     //          right is "End" -> game is over
     public void rightBehaviours() {
+        player.setIsLeft(false);
         if (!(player.getXpos() + 1 >= gameWorld.getWidth())) {
             if (gameWorld.getBlock(player.getXpos() + 1, player.getYpos()).getType().equals("Empty")) {
                 player.moveRight();
@@ -149,6 +152,8 @@ public class Simulate {
     //              below is "Death" -> respawn player, player is now no longer falling
     //              below is "End" -> game is over
     public void fallingBehaviours() {
+        player.setIdleFrame(1);
+        player.resetIdleChangeDelayTickTick();
         if (player.getYpos() + 1 >= gameWorld.getHeight()) {
             player.setFalling(false);
         } else if ((gameWorld.getBlock(player.getXpos(), player.getYpos() + 1).getType().equals("Tile"))) {
@@ -173,6 +178,8 @@ public class Simulate {
     //              above is "Death" -> respawn player, player is now no longer jumping
     //              above is "End" -> game is over
     public void jumpingBehaviours() {
+        player.setIdleFrame(1);
+        player.resetIdleChangeDelayTickTick();
         if (player.getYpos() - 1 < 0) {
             player.hitHead();
         } else if (gameWorld.getBlock(player.getXpos(), player.getYpos() - 1).getType().equals("Tile")) {
@@ -204,6 +211,16 @@ public class Simulate {
             } else if (gameWorld.getBlock(player.getXpos(), player.getYpos() + 1).getType().equals("End")) {
                 setGameOver();
             }
+        }
+        if (player.getIdleChangeDelayTick() > 0) {
+            player.idleChangeDelayTickTick();
+        } else {
+            if (player.getIdleFrame() == 1) {
+                player.setIdleFrame(2);
+            } else {
+                player.setIdleFrame(1);
+            }
+            player.resetIdleChangeDelayTickTick();
         }
     }
 
