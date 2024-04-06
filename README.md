@@ -38,10 +38,630 @@ through "Empty", player will be put back on top of "Spawn" when touching "Death"
 playing mode if player touches "End", "Tile" and "Spawn" will stop player.
 from moving through them.
 - To save the current world, click the "Save" button, or the "Quit" button, 
-note that the "Quite" button will put you back to the screen where it gives the option
+note that the "Quit" button will put you back to the screen where it gives the option
 to select "Load" or "New World"
 - To load the application, click the load button when the program begins, or quit button to
 go back to the beginning screen.
 - You can locate my visual component by having a spawn placed in world then clicking play,
 the visual element is the model of the player, the exact files can be found in the data folder, where the saves
 are located.
+
+# "Phase 4: Task 2"
+Fri Apr 05 22:26:58 PDT 2024
+
+Created World of 17 x 17
+
+Fri Apr 05 22:27:01 PDT 2024
+
+Set block: Spawn at 0, 16
+
+Fri Apr 05 22:27:01 PDT 2024
+
+Set block: Empty at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Now simulating...
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Created Player
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+d key pressed
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player is facing Left? false
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player moved right
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's falling state is: true
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set block: Empty at 0, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player falled
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set block: Empty at 1, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's falling state is: false
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's air and jump tick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+w key pressed
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's jumping state is: true
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player jumped
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set block: Empty at 1, 16
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player jumped
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set block: Empty at 1, 15
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:02 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player is in air
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's jumping state is: false
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's falling state is: true
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set Player at 1, 14
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player falled
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set Player at 1, 15
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set block: Empty at 1, 14
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player falled
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set block: Empty at 1, 15
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idle frame is 1
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's falling state is: false
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's air and jump tick is reset
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:03 PDT 2024
+
+a key pressed
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player is facing Left? true
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idle frame is 2
+
+Fri Apr 05 22:27:03 PDT 2024
+
+Player's idleChangeDelayTick is reset
+
+
+Fri Apr 05 22:27:04 PDT 2024
+
+No longer simulating...
+
+Fri Apr 05 22:27:04 PDT 2024
+
+Player's idleChangeDelayTick is reduced
+
+Fri Apr 05 22:27:04 PDT 2024
+
+Set Player at 1, 16
+
+Fri Apr 05 22:27:04 PDT 2024
+
+Set block: Empty at 1, 16
+
+Fri Apr 05 22:27:04 PDT 2024
+
+Player is removed
+
+Fri Apr 05 22:27:06 PDT 2024
+
+Saved world: name to ./data/save.json
+
+Process finished with exit code 0
+
+# "Phase 4: Task 3"
+If I had more time to work on the project, 
+I would change the World class to have the singleton
+design pattern since the entire program operates on one 
+World only, if I was able to use singleton then I did not 
+to pass it between so many classes in the model. I could
+then have the Game and Class separate from the objects in the game.
+
+I could've also added observers for the player and make the handling of
+player coming in touch with other blocks be handled elsewhere.
+This removes some responsibilities from the Simulate class,
+as it currently handles inputs, player behaviours, and updating the
+world all together. 
+

@@ -12,6 +12,7 @@ public class Player extends Blocks {
     private int idleFrame;
     private int jumpTick;
     private int airTick;
+    private int intermediateX;
 
     // EFFECTS: constructs player with xpos, and ypos,
     //          sets falling and jumping to false
@@ -27,24 +28,32 @@ public class Player extends Blocks {
         airTick = 10;
         idleChangeDelayTick = 15;
         type = "Player";
+        intermediateX = 0;
+        EventLog.getInstance().logEvent(new Event("Created Player"));
     }
 
     // MODIFIES: this
     // EFFECTS: player xpos - 1 (player moves left)
     public void moveLeft() {
         xpos--;
+        EventLog.getInstance().logEvent(
+                new Event("Player moved left"));
     }
 
     // MODIFIES: this
     // EFFECTS: player xpos + 1 (player moves right)
     public void moveRight() {
         xpos++;
+        EventLog.getInstance().logEvent(
+                new Event("Player moved right"));
     }
 
     // MODIFIES: this
     // EFFECTS: sets jumping to inputted state
     public void setJumping(Boolean state) {
         jumping = state;
+        EventLog.getInstance().logEvent(
+                new Event("Player's jumping state is: " + state));
     }
 
     // MODIFIES: this
@@ -55,11 +64,19 @@ public class Player extends Blocks {
         if (jumpTick > 0) {
             ypos--;
             jumpTick--;
+            EventLog.getInstance().logEvent(
+                    new Event("Player jumped"));
         } else {
             airTick--;
+            EventLog.getInstance().logEvent(
+                    new Event("Player is in air"));
             if (airTick <= 0) {
                 jumping = false;
+                EventLog.getInstance().logEvent(
+                        new Event("Player's jumping state is: " + false));
                 falling = true;
+                EventLog.getInstance().logEvent(
+                        new Event("Player's falling state is: " + true));
             }
         }
     }
@@ -71,11 +88,19 @@ public class Player extends Blocks {
     public void hitHead() {
         if (jumpTick > 0) {
             jumpTick--;
+            EventLog.getInstance().logEvent(
+                    new Event("Player hit head"));
         } else {
             airTick--;
+            EventLog.getInstance().logEvent(
+                    new Event("Player is in air"));
             if (airTick <= 0) {
                 jumping = false;
+                EventLog.getInstance().logEvent(
+                        new Event("Player's jumping state is: " + false));
                 falling = true;
+                EventLog.getInstance().logEvent(
+                        new Event("Player's falling state is: " + true));
             }
         }
     }
@@ -84,6 +109,8 @@ public class Player extends Blocks {
     // EFFECTS: player ypos + 1 (player moves down)
     public void fall() {
         this.ypos++;
+        EventLog.getInstance().logEvent(
+                new Event("Player falled"));
     }
 
     // MODIFIES: this
@@ -91,9 +118,13 @@ public class Player extends Blocks {
     //          if set to false, reset airTick and jumpTick
     public void setFalling(boolean state) {
         falling = state;
+        EventLog.getInstance().logEvent(
+                new Event("Player's falling state is: " + state));
         if (!state) {
             airTick = 10;
             jumpTick = 2;
+            EventLog.getInstance().logEvent(
+                    new Event("Player's air and jump tick is reset"));
         }
     }
 
@@ -111,36 +142,48 @@ public class Player extends Blocks {
     // EFFECTS: sets player xpos to input
     public void setXpos(int xpos) {
         this.xpos = xpos;
+        EventLog.getInstance().logEvent(
+                new Event("Player's xpos is: " + xpos));
     }
 
     // MODIFIES: this
     // EFFECTS: sets player ypos to input
     public void setYpos(int ypos) {
         this.ypos = ypos;
+        EventLog.getInstance().logEvent(
+                new Event("Player's ypos is: " + xpos));
     }
 
     // MODIFIES: this
     // EFFECTS: sets whether the player is facing left
     public void setIsLeft(Boolean bool) {
         isLeft = bool;
+        EventLog.getInstance().logEvent(
+                new Event("Player is facing Left? " + bool));
     }
 
     // MODIFIES: this
     // EFFECTS: sets the player's idle frame
     public void setIdleFrame(int n) {
         idleFrame = n;
+        EventLog.getInstance().logEvent(
+                new Event("Player's idle frame is " + n));
     }
 
     // MODIFIES: this
     // EFFECTS:  -1 on the player's idle frame delay
     public void idleChangeDelayTickTick() {
         idleChangeDelayTick--;
+        EventLog.getInstance().logEvent(
+                new Event("Player's idleChangeDelayTick is reduced"));
     }
 
     // MODIFIES: this
     // EFFECTS:  set the player's idle frame delay to 10
     public void resetIdleChangeDelayTickTick() {
         idleChangeDelayTick = 15;
+        EventLog.getInstance().logEvent(
+                new Event("Player's idleChangeDelayTick is reset"));
     }
 
     // EFFECTS: returns the jumpTick
@@ -167,4 +210,5 @@ public class Player extends Blocks {
     public int getIdleChangeDelayTick() {
         return idleChangeDelayTick;
     }
+
 }

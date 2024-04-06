@@ -1,12 +1,17 @@
 package ui;
 
 
+import model.EventLog;
 import model.World;
 import persistence.JsonReader;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.awt.event.WindowStateListener;
+
 import static javax.swing.SwingConstants.CENTER;
 
 // a class the represents the title screen
@@ -30,6 +35,8 @@ public class TitleScreen extends JFrame {
     public TitleScreen() {
         super();
         jsonReader = new JsonReader(STORE);
+        WindowHandler wh = new WindowHandler();
+        addWindowListener(wh);
         initializeScreen();
         initializeTitleScreen();
     }
@@ -139,7 +146,6 @@ public class TitleScreen extends JFrame {
     // EFFECTS: loads game from save file and starts game on new screen
     public void loadGame() {
         try {
-            System.out.println("Loaded world from " + STORE);
             dispose();
             JFrame gameScreen = new GameScreen(jsonReader.read("name"));
         } catch (Exception e) {
@@ -179,6 +185,43 @@ public class TitleScreen extends JFrame {
             JSlider source = (JSlider)e.getSource();
             height = source.getValue();
             heightLabel.setText("Height: " + height);
+        }
+    }
+
+    private class WindowHandler implements WindowListener {
+
+        @Override
+        public void windowOpened(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            EventLog.getInstance().printLog();
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+
         }
     }
 }

@@ -49,6 +49,8 @@ public class World implements Writable {
                 this.world.add(new Empty(j, i));
             }
         }
+        EventLog.getInstance().logEvent(
+                new Event("Created World of " + width + " x " + height));
     }
 
     // REQUIRES: 0 <= x < width, 0 <= y < height
@@ -92,6 +94,9 @@ public class World implements Writable {
             }
         }
         world.set(block.getXpos() + (width * block.getYpos()), block);
+        EventLog.getInstance().logEvent(
+                new Event("Set block: " + block.getType()
+                        + " at " + block.getXpos() + ", " + block.getYpos()));
     }
 
     // REQUIRES: xposStart > xposEnd, xposStart >= 0, xposEnd < width

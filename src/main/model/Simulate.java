@@ -51,6 +51,8 @@ public class Simulate {
     //          previously travelling through with empty
     public void reflectPlayerToWorld() {
         gameWorld.getWorld().set(player.getXpos() + (player.getYpos() * gameWorld.getWidth()),player);
+        EventLog.getInstance().logEvent(
+                new Event("Set Player at " + player.getXpos() + ", " + player.getYpos()));
         for (int i = 0; i < gameWorld.getWorld().size(); i++) {
             if (gameWorld.getWorld().get(i).getType().equals("Player")
                     && i != (player.getXpos() + (player.getYpos() * gameWorld.getWidth()))) {
@@ -71,17 +73,21 @@ public class Simulate {
     //          a -> move left
     //          d -> move right
     //          o -> end game
+    @SuppressWarnings("checkstyle:MethodLength")
     public void updatePlayerPositions() {
         switch (input) {
             case 'w':
+                EventLog.getInstance().logEvent(new Event("w key pressed"));
                 player.setJumping(true);
                 break;
 
             case 'a':
+                EventLog.getInstance().logEvent(new Event("a key pressed"));
                 leftBehaviours();
                 break;
 
             case 'd':
+                EventLog.getInstance().logEvent(new Event("d key pressed"));
                 rightBehaviours();
                 break;
 
@@ -241,6 +247,8 @@ public class Simulate {
     // EFFECTS: set gameOver to true
     public void setGameOver() {
         gameOver = true;
+        EventLog.getInstance().logEvent(
+                new Event("No longer simulating..."));
     }
 
     // MODIFIES: this
@@ -248,6 +256,8 @@ public class Simulate {
     public void removePlayer() {
         try {
             gameWorld.setBlock("Empty", player.getXpos(), player.getYpos());
+            EventLog.getInstance().logEvent(
+                    new Event("Player is removed"));
         } catch (Exception e) {
             //Can't cause exception
         }

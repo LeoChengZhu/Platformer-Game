@@ -97,10 +97,12 @@ public class GameScreen extends JFrame {
     // EFFECTS:  initializes a KeyHandler and a MouseListener to be used in the JFrame
     private void initializeInteraction() {
         KeyHandler kh = new KeyHandler();
+        WindowHandler wh = new WindowHandler();
         addKeyListener(kh);
         MouseListener ml = new MouseListener();
         addMouseListener(ml);
         addMouseMotionListener(ml);
+        addWindowListener(wh);
     }
 
     // MODIFIES: this
@@ -261,6 +263,43 @@ public class GameScreen extends JFrame {
         // EFFECTS: translates the mouse event to current drawing's coordinate system
         private MouseEvent translateEvent(MouseEvent e) {
             return SwingUtilities.convertMouseEvent(e.getComponent(), e, currentScreen);
+        }
+    }
+
+    private class WindowHandler implements WindowListener {
+
+        @Override
+        public void windowOpened(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            EventLog.getInstance().printLog();
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+
         }
     }
 }

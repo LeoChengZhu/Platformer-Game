@@ -22,7 +22,7 @@ public class PlayerShape extends BlockShape {
 
     // EFFECTS: Constructor
     public PlayerShape(int x, int y, Color color, Player player) {
-        super(x,y,color);
+        super(x, y, color);
         this.player = player;
     }
 

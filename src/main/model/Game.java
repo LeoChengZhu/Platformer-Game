@@ -29,7 +29,6 @@ public class Game {
         input = "";
         jsonWriter = new JsonWriter(STORE);
         over = false;
-        simulate = new Simulate();
     }
 
     // MODIFIES: this
@@ -179,7 +178,7 @@ public class Game {
                 case "Player":
                     worldShapes.add(new PlayerShape(
                             object.getXpos() * 20,
-                            object.getYpos()  * 20,
+                            object.getYpos() * 20,
                             new Color(0, 0, 0), (Player) object));
                     break;
             }
@@ -207,7 +206,10 @@ public class Game {
     // EFFECTS: initializes simulate, turns game state into simulating (playing)
     public void play() {
         if (checkForSpawn()) {
+            simulate = new Simulate();
             simulating = true;
+            EventLog.getInstance().logEvent(
+                    new Event("Now simulating..."));
             simulate.initializeSimulation(world);
         }
     }
@@ -228,9 +230,9 @@ public class Game {
             jsonWriter.open();
             jsonWriter.write(world, name);
             jsonWriter.close();
-            System.out.println("Saved world " + name + " to " + STORE);
+            EventLog.getInstance().logEvent(new Event("Saved world: " + name + " to " + STORE));
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + STORE);
+            //System.out.println("Unable to write to file: " + STORE);
         }
     }
 
