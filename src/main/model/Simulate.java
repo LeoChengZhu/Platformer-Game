@@ -68,13 +68,12 @@ public class Simulate {
     }
 
     // MODIFIES: this
-    // EFFECTS: updates player positions according to input, player state, and blocks, and resets stored input
+    // EFFECTS: updates player positions according to input
     //          w -> sets jumping state of player to true
     //          a -> move left
     //          d -> move right
     //          o -> end game
-    @SuppressWarnings("checkstyle:MethodLength")
-    public void updatePlayerPositions() {
+    public void handleInput() {
         switch (input) {
             case 'w':
                 EventLog.getInstance().logEvent(new Event("w key pressed"));
@@ -92,8 +91,15 @@ public class Simulate {
                 break;
 
             case 'o':
+                EventLog.getInstance().logEvent(new Event("o key pressed"));
                 setGameOver();
         }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: updates player positions according to input, player state, and blocks, and resets stored input
+    public void updatePlayerPositions() {
+        handleInput();
         if (player.getFalling()) {
             fallingBehaviours();
         }
@@ -103,7 +109,6 @@ public class Simulate {
         if (!player.getJumping() && !player.getFalling()) {
             neutralBehaviours();
         }
-
         this.input = '0';
     }
 
